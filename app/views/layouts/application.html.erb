@@ -4,15 +4,41 @@
     <title>EShop</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% flash.each do |type, msg| %>
-      <div class="alert alert-<%=type%>"><%= msg %></div>
-    <% end %>
-    <%= yield %>
+  <body class="bg-light">
+    <div class="container">
+      <nav class="navbar navbar-light bg-light">
+        <% if user_signed_in? %>
+
+            <%= link_to 'HOME', root_path %>
+          
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+
+            Voici ton email : <%= current_user.email %>
+
+            <%= link_to "Edit email / password", edit_user_registration_path %>
+
+            <%= link_to 'Cart', cart_path, class: 'btn btn-outline-primary' %>
+
+        <% else %>
+            <%= link_to "Sign in", new_user_session_path %>
+
+            <%= link_to "Sign up", new_user_registration_path %>
+
+        <% end %>
+      </nav>
+
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-<%=type%>"><%= msg %></div>
+      <% end %>
+      
+      <%= yield %>
+    </div>
   </body>
 </html>

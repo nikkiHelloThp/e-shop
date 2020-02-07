@@ -1,24 +1,25 @@
-# README
+#### un produit ne peut couter plus de 999.99 euro
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ajouter plus tard la quantite au model order_product, peut etre aussi le total et le prix unitaire
 
-Things you may want to cover:
+total = unit price * quantity
 
-* Ruby version
+utiliser react pour le rendu dynamique
 
-* System dependencies
+utiliser cookies a la place de session
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+trop de requetes serveur
+=>
+Started GET "/cart" for ::1 at 2020-02-07 17:04:05 +0100
+Processing by CartsController#show as HTML
+  *Order Load* (0.9ms)  SELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2  [["id", 10], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:4
+  Rendering carts/show.html.erb within layouts/application
+  *OrderProduct* Load (0.4ms)  SELECT "order_products".* FROM "order_products" WHERE "order_products"."order_id" = $1  [["order_id", 10]]
+  ↳ app/views/carts/show.html.erb:10
+  *Product Load* (0.2ms)  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:13
+  Rendered carts/show.html.erb within layouts/application (3.4ms)
+  *User Load* (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 31ms (Views: 24.3ms | ActiveRecord: 1.6ms)

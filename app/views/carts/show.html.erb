@@ -1,0 +1,23 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Image</th>
+			<th scope="col">Price</th>
+			<th scope="col">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @order_products.each do |order_product| %>
+			<tr>
+				<th>
+					<img src="<%= order_product.product.image_url %>" alt="">
+				</th>
+				<th><%= order_product.product.price %></th>
+				<th>
+					<%= link_to '<i class="fa fa-trash"></i>'.html_safe, order_product_path(order_product), method: :delete, data: { confirm: 'Are you sure?' } %>
+				</th>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<a href="#" class="btn btn-primary">Pay <%= @order_products.collect {|order_product| order_product.product.price}.sum %></a>
