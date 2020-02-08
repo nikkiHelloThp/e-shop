@@ -23,3 +23,22 @@ Processing by CartsController#show as HTML
   *User Load* (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2  [["id", 1], ["LIMIT", 1]]
   ↳ app/views/layouts/application.html.erb:17
 Completed 200 OK in 31ms (Views: 24.3ms | ActiveRecord: 1.6ms)
+
+# Stripe
+
+etape 1:
+creer un config environnement stripe.rb
+ajouter la variable Rails.configuration.stripe = {
+  publishable_key = ENV['STRIPE_PUBLISHABLE_KEY'],
+  secret_key = ENV['STRIPE_SECRET_KEY']
+}
+
+stripe.api_key = Rails.configuration.stripe[:secret_key]
+
+*pour consulter les routes depuis le navigateur : localhost:3000/rails/info*
+
+etape 2:
+creer les routes pour stripe => checkout => create, cancel, success
+creer le controller Checkout avec ces methodes
+
+mais surtout suivre la doc

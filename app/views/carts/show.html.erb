@@ -20,4 +20,6 @@
 		<% end %>
 	</tbody>
 </table>
-<a href="#" class="btn btn-primary">Pay <%= @order_products.collect {|order_product| order_product.product.price}.sum %></a>
+<%= button_to checkout_create_path, params: { amount: current_order.total }, class: 'btn btn-primary', remote: true do %>
+	<span>Pay <%= @order.total %> &euro;</span>
+<% end %>

@@ -1,0 +1,8 @@
+<h1>Thank you !</h1>
+<h2>You successfully purchased: </h2>
+<ul class="list-group">
+  <li class="list-group-item disabled">Product</li>
+  <% @order_products.each do |order_product| %>
+  	<li class="list-group-item"><%= order_product.product.title %></li>
+	<% end %>
+</ul>
