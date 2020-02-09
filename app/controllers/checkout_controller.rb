@@ -24,6 +24,7 @@ class CheckoutController < ApplicationController
     order = current_order
     @order_products = order.order_products
     session[:cart] = nil
+    UserMailer.with(user: current_user).order_email.deliver_now
   end
 
   def cancel
