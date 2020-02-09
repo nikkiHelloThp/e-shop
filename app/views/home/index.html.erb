@@ -1,7 +1,7 @@
 <div class="card-columns">
 	<% @products.each do |product| %>
 		<div class="card" style="width: 18rem;">
-			<img class="card-img-top" src="<%= product.image_url %>" alt="">
+			<%= image_tag 'product.jpg', class: 'card-img-top' %>
 			<div class="card-body">
 				<div class="row">
 					<div class="col">
