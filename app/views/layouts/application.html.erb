@@ -27,6 +27,10 @@
 
             <%= link_to 'Cart', cart_path, class: 'btn btn-outline-primary' %>
 
+          <% if current_user.admin %>
+            <%= link_to 'Admin', products_path %>
+          <% end %>
+
         <% else %>
             <%= link_to "Sign in", new_user_session_path %>
 

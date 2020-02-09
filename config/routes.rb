@@ -3,6 +3,10 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  scope module: :admin do
+    resources :products
+  end
+
   scope '/checkout' do
   	post 'create', to: 'checkout#create', as: 'checkout_create'
   	get 'success', to: 'checkout#success', as: 'checkout_success'
