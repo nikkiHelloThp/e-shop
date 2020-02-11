@@ -15,8 +15,7 @@ class Admin::ProductsController < ApplicationController
 	end
 
 	def create
-		@product = Product.new(product_params)
-
+		@product = Product.create(product_params)
 		if @product.save
 			redirect_to @product
 		else
@@ -48,6 +47,6 @@ class Admin::ProductsController < ApplicationController
 	end
 
 	def product_params
-		params.require(:product).permit(:title, :description, :price)
+		params.require(:product).permit(:title, :description, :price, :image)
 	end
 end

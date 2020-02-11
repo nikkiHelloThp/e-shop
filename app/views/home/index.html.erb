@@ -1,16 +1,22 @@
 <div class="card-columns">
 	<% @products.each do |product| %>
 		<div class="card" style="width: 18rem;">
-			<%= image_tag 'product.jpg', class: 'card-img-top' %>
+			
+			<% if product.image.attached? %>
+				<%= image_tag product.image, alt: 'image', class: 'card-img-top' %>
+			<% else %>
+				<%= image_tag 'product.jpg', class: 'card-img-top' %>
+			<% end %>
+
 			<div class="card-body">
 				<div class="row">
 					<div class="col">
 						<h3><%= product.title %></h3>
 						<h4 class="text-secondary"><%= product.description %></h4>
-						<h5 class="text-info"><%= product.price %></h5>
+						<h5 class="text-primary"><%= product.price %></h5>
 						<%= form_with model: @order_product do |f| %>
 							<%= f.hidden_field :product_id, value: product.id %>
-							<%= f.submit 'Add to cart', class: 'btn btn-info btn-sm' %>
+							<%= f.submit 'Add to cart', class: 'btn btn-primary btn-sm' %>
 						<% end %>
 					</div>
 				</div>

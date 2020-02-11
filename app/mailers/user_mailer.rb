@@ -11,4 +11,9 @@ class UserMailer < ApplicationMailer
 		@user = params[:user]
 		mail(to: @user.email, subject: 'Order confirmed !')
 	end
+
+	def admin_order_email
+		@admin = params[:admin]
+		mail(to: @admin.email, subject: 'New order !')
+	end
 end

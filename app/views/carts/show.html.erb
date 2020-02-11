@@ -10,7 +10,6 @@
 		<% @order_products.each do |order_product| %>
 			<tr>
 				<th>
-					<!-- <img src="<%= order_product.product.image_url %>" alt=""> -->
 					<%= image_tag 'product.jpg', class: 'card-img-top' %>
 				</th>
 				<th><%= order_product.product.price %></th>
