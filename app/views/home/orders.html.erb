@@ -1,0 +1,12 @@
+<% @orders.each do |order| %>
+	<div class="mb-4">
+	<%= order.id %> - <%= order.created_at.strftime("Date : %m/%d/%Y at %I:%M%p") %>
+		<% order.products.each do |product| %>
+			<div class="ml-4">
+				<%= product.title %>
+				<span class="text-secondary"><%= product.description %></span>
+				<span class="text-primary"><%= product.price %></span>
+			</div>
+		<% end %>
+	</div>
+<% end %>

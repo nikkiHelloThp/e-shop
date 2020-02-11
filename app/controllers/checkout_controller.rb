@@ -9,7 +9,7 @@ class CheckoutController < ApplicationController
   			description: "payment of order : #{order.id}",
   			amount: order.total_in_cent,
   			currency: 'eur',
-  			quantity: order.order_products.size,
+  			quantity: 1,
 			}],
       success_url: checkout_success_url,
       cancel_url: checkout_cancel_url,
@@ -22,6 +22,7 @@ class CheckoutController < ApplicationController
 
   def success
     order = current_order
+    order.update(paid: true)
     @order_products = order.order_products
     session[:cart] = nil
     UserMailer.with(user: current_user).order_email.deliver_now
