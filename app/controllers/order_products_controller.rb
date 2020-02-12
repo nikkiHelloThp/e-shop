@@ -5,7 +5,7 @@ class OrderProductsController < ApplicationController
     @order = current_order
     @order_product = @order.order_products.new(order_item_params)
     @order.save
-    session[:cart] = @order.id
+    cookies[:cart] = @order.id
   end
 
   def destroy

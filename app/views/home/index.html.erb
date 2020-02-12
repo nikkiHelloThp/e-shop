@@ -1,26 +1,87 @@
-<div class="card-columns">
-	<% @products.each do |product| %>
-		<div class="card" style="width: 18rem;">
-			
-			<% if product.image.attached? %>
-				<%= image_tag product.image, alt: 'image', class: 'card-img-top' %>
-			<% else %>
-				<%= image_tag 'product.jpg', class: 'card-img-top' %>
-			<% end %>
+<!--
+<span class="ribbon ribbon-right ribbon-warning rounded-circle">10%</span>
+<span class="ribbon ribbon-right ribbon-danger rounded-circle">30%</span>
+<span class="ribbon ribbon-right ribbon-danger rounded-circle">50%</span>
+<span class="ribbon ribbon-right ribbon-primary rounded-circle">New</span>
+<span class="ribbon ribbon-right ribbon-dark rounded-circle">Top</span>
+-->
 
-			<div class="card-body">
-				<div class="row">
-					<div class="col">
-						<h3><%= product.title %></h3>
-						<h4 class="text-secondary"><%= product.description %></h4>
-						<h5 class="text-primary"><%= product.price %></h5>
-						<%= form_with model: @order_product do |f| %>
-							<%= f.hidden_field :product_id, value: product.id %>
-							<%= f.submit 'Add to cart', class: 'btn btn-primary btn-sm' %>
-						<% end %>
-					</div>
-				</div>
-			</div>
-		</div>
-	<% end %>
-</div>
+<section class="slice slice-lg bg-cover bg-size--cover" style="background-image: url(<%= asset_path 'img-15.jpg' %>);">
+
+    <div class="container py-lg">
+        <div class="row">
+            <div class="col-lg-5">
+                <h2 class="h1 text-white">Fall Accessories</h2>
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                    <li class="breadcrumb-item">
+                        <a href="#" class="text-normal">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#" class="text-normal">Shop</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#" class="text-normal">Fitness clothing</a>
+                    </li>
+                </ol>
+                <p class="lead text-white mt-4">There is only that moment and the incredible certainty that everything under the sun has been written by one hand only.</p>
+                <a href="#section2" class="btn btn-white btn-circle mt-4">Start shopping</a>
+            </div>
+        </div>
+    </div>
+<!--
+    <div class="shape-container" data-shape-style="wavify" data-shape-position="bottom">
+        <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="shape-fill-white" data-toggle="wavify">
+            <defs></defs>
+            <path d="" class="shape-fill-white" />
+        </svg>
+    </div>
+-->
+</section>
+
+
+<section class="slice slice-lg" id="sct-products">
+    <div class="container" id="section2">
+
+        <div class="row">
+
+					<% @products.each do |product| %>
+            <div class="col-lg-3 col-sm-6 mb-5">
+                <div class="card card-product no-border shadow shadow--hover">
+                    <div class="card-image">
+                        <a href="#">
+													<%= image_tag product.image, alt: 'Image placeholder', class: 'img-center' %>
+                        </a>
+
+                        <!-- <span class="ribbon ribbon-right ribbon-primary rounded-circle">New</span> -->
+
+                    </div>
+                    <div class="card-body pt-0 text-center">
+                        <a href="shop-product.html" class="card-title"><%= product.title %></a>
+                        <span class="card-price"><%= product.price %> &euro;</span> 
+                    </div>
+										
+										<div class="container text-center">
+                    <%= form_with model: @order_product do |f| %>
+											<%= f.hidden_field :product_id, value: product.id %>
+											<%= f.submit 'Add to cart', class: 'btn btn-primary ml-3' %>
+
+										<% end %>
+									</div>
+
+        				<!--
+        					<div class="card-product-actions" data-animation-in="slideInLeft" data-animation-out="slideOutLeft">
+                      <button type="button" class="btn-product-action" data-toggle="tooltip" data-original-title="Add to cart">
+                          <i class="fas fa-shopping-bag"></i>
+                      </button>
+                  </div>
+                -->
+
+                </div>
+            </div>
+          <% end %>
+
+
+        </div>
+
+    </div>
+</section>

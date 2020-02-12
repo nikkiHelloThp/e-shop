@@ -6,7 +6,7 @@ total = unit price * quantity
 
 utiliser react pour le rendu dynamique
 
-utiliser cookies a la place de session
+smoothscroll
 
 trop de requetes serveur
 =>
@@ -30,3 +30,6 @@ Completed 200 OK in 31ms (Views: 24.3ms | ActiveRecord: 1.6ms)
 ajouter cles sendgrid sur heroku
 
 ajouter amazon S3
+
+template:
+  file:///home/nikki/Bureau/directories/bootstrap/Bootstrap%20Themes/UI%20Kit/Purpose-website-ui-kit-v1.1.3/pages/pages-shop.html

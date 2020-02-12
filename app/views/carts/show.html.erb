@@ -1,29 +1,5 @@
-<table class="table">
-	<thead>
-		<tr>
-			<th scope="col">Image</th>
-			<th scope="col">Price</th>
-			<th scope="col">Action</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @order_products.each do |order_product| %>
-			<tr>
-				<th>
-					<% if order_product.product.image.attached? %>
-						<%= image_tag order_product.product.image, alt: 'image', class: 'card-img-top' %>
-					<% else %>
-						<%= image_tag 'product.jpg', class: 'card-img-top' %>
-					<% end %>
-				</th>
-				<th><%= order_product.product.price %></th>
-				<th>
-					<%= link_to '<i class="fa fa-trash"></i>'.html_safe, order_product_path(order_product), method: :delete, data: { confirm: 'Are you sure?' } %>
-				</th>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
-<%= button_to checkout_create_path, params: { amount: current_order.total }, class: 'btn btn-primary', remote: true do %>
-	<span>Pay <%= @order.total %> &euro;</span>
+<% if @order_products.any? %>
+    <%= render 'cart' %>
+<% else %>
+    <%= render 'empty_cart' %>
 <% end %>

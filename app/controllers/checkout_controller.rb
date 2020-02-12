@@ -24,7 +24,7 @@ class CheckoutController < ApplicationController
     order = current_order
     order.update(paid: true)
     @order_products = order.order_products
-    session[:cart] = nil
+    cookies.delete(:cart)
     UserMailer.with(user: current_user).order_email.deliver_now
     UserMailer.with(admin: User.find_by(admin: true)).admin_order_email.deliver_now
   end

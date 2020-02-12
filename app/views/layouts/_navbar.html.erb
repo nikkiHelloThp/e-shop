@@ -1,0 +1,96 @@
+<nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-transparent navbar-dark bg-dark" id="navbar-main">
+    <div class="container">
+        <%= link_to "Home", root_path, class: 'navbar-brand mr-lg-5' %>
+            <!-- <img alt="Image placeholder" src="../assets/img/brand/white.png" style="height: 50px;"> -->
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar-main-collapse">
+            <% if user_signed_in? %>
+                <ul class="navbar-nav align-items-lg-center">
+                    <li class="nav-item ">
+                        <%= link_to "My account", edit_user_registration_path, class: 'nav-link' %>
+                    </li>
+    <!--                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-arrow py-0">
+                            <div class="list-group">
+                                <a href="../pages/pages-landing.html" class="list-group-item list-group-item-action">
+                                    <div class="media d-flex align-items-center">
+                                        <img alt="Image placeholder" src="../assets/img/icons/dusk/svg/browser-window.svg" class="img-saturate" style="width: 50px;">
+                                        <div class="media-body ml-3">
+                                            <h6 class="mb-1">Landing Pages</h6>
+                                            <p class="mb-0">A great point to start from.</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="../pages/pages-secondary.html" class="list-group-item list-group-item-action">
+                                    <div class="media d-flex align-items-center">
+                                        <img alt="Image placeholder" src="../assets/img/icons/dusk/svg/ios-photos.svg" class="img-saturate" style="width: 50px;">
+                                        <div class="media-body ml-3">
+                                            <h6 class="mb-1">Secondary Pages</h6>
+                                            <p class="mb-0">Build your website with these demos.</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="../pages/pages-account.html" class="list-group-item list-group-item-action">
+                                    <div class="media d-flex align-items-center">
+                                        <img alt="Image placeholder" src="../assets/img/icons/dusk/svg/maintenance.svg" class="img-saturate" style="width: 50px;">
+                                        <div class="media-body ml-3">
+                                            <h6 class="mb-1">Account Pages</h6>
+                                            <p class="mb-0">Account management made easy.</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="../pages/pages-shop.html" class="list-group-item list-group-item-action">
+                                    <div class="media d-flex align-items-center">
+                                        <img alt="Image placeholder" src="../assets/img/icons/dusk/svg/in-progress.svg" class="img-saturate" style="width: 50px;">
+                                        <div class="media-body ml-3">
+                                            <h6 class="mb-1">Shop Pages</h6>
+                                            <p class="mb-0">Explore the full ecommerce website flow.</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li> -->
+                    <li class="nav-item">
+                        <%= link_to "Orders", orders_path, class: 'nav-link' %>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                    <li class="nav-item">
+                        <%= link_to 'Sign out <i class="fa fa-sign-out"></i>'.html_safe, destroy_user_session_path, class: 'nav-link', method: :delete %>
+                    </li>
+                    <li class="nav-item">
+                        <% if current_user.admin %>
+                            <%= link_to "Admin", products_path, class: 'nav-link' %>
+                        <% end %>
+                    </li>
+                    <li class="nav-item mr-0">
+                        <%= link_to cart_path, class: 'btn btn-sm btn-white btn-circle btn-icon d-none d-lg-inline-flex' do %>
+                            <span class="btn-inner--icon"><i class="fas fa-shopping-cart"></i></span>
+                            <span class="btn-inner--text">Cart</span>
+                        <% end %>
+                        </a>
+                    </li>
+                </ul>
+
+            <% else %>
+                <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                    <li class="nav-item">
+                        <%= link_to "Sign in", new_user_session_path, class: 'nav-link' %>
+                    </li>
+                    <li class="nav-item mr-0">
+                        <%= link_to "Sign up", new_user_registration_path, class: 'nav-link' %>
+                    </li>
+                </ul>
+                
+            <% end %>
+        </div>
+    </div>
+</nav>
