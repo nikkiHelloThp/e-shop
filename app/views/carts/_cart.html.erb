@@ -24,7 +24,7 @@
                 <thead>
                     <tr>
                         <th>Product</th>
-                        <th>Price</th>
+                        <th>Unit price</th>
                         <th>Quantity</th>
                         <th>Total</th>
                         <th></th>
@@ -46,13 +46,21 @@
                                 </div>
                             </td>
                             <td>
-                                <span class="font-weight-bold"><%= order_product.product.price %> &euro;</span>
+                                <span class="font-weight-bold"><%= order_product.unit_price %> &euro;</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm text-center" style="width: 80px;" value="1">
+                                <!-- CART '/POST' PAS D'ACTION !! -->
+                                <%= form_with model: @order_product do |f| %>
+                                    <div class="row">
+                                        <%= f.hidden_field :product_id, value: order_product.id %>
+                                        <%= f.text_field :quantity, value: order_product.quantity, min: 1, class: 'form-control form-control-sm text-center', style: 'width: 80px' %>
+                                        <%= f.submit 'Update', class: 'btn btn-sm btn-primary ml-1' %>
+                                    </div>
+                                    
+                                <% end %>
                             </td>
                             <td>
-                                <span class="font-weight-bold text-dark">$129 USD</span>
+                                <span class="font-weight-bold text-dark"><%= order_product.total_price %> &euro;</span>
                             </td>
                             <td class="text-right">
                                 <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, order_product_path(order_product), class: 'text-light', method: :delete, data: { confirm: 'Are you sure?', toggle: 'tooltip', original: {title: 'Remove item'} } %>

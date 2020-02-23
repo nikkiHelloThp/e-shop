@@ -1,0 +1,20 @@
+<div class="col-lg-3 col-sm-6 mb-5">
+    <div class="card card-product no-border shadow shadow--hover">
+        <div class="card-image">    
+        <%= link_to image_tag(product.image), product_path(product), alt: 'Image placeholder', class: 'img-center' %>
+        
+        </div>
+        <div class="card-body pt-0 text-center">
+            <a href="shop-product.html" class="card-title"><%= product.title %></a>
+            <span class="card-price"><%= product.price %> &euro;</span> 
+        </div>
+							
+		<div class="container text-center">
+            <%= form_with model: @order_product do |f| %>
+				<%= f.hidden_field :product_id, value: product.id %>
+				<%= f.submit 'Add to cart', class: 'btn btn-primary ml-3' %>
+			<% end %>
+		</div>
+
+    </div>
+</div>

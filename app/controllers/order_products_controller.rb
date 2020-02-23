@@ -8,16 +8,23 @@ class OrderProductsController < ApplicationController
     cookies[:cart] = @order.id
   end
 
+  def update
+    @order = current_order
+    @order_product = @order.order_products.find(params[:id])
+    @order_product.update_attributes(order_item_params)
+    @order_products = @order.order_products
+  end
+
   def destroy
     @order = current_order
     @order_product = @order.order_products.find(params[:id])
     @order_product.destroy
-    redirect_to cart_path
+    redirect_to cart_path # @order_products = @order.order_products
   end
 
   private
 
   def order_item_params
-    params.require(:order_product).permit(:product_id)
+    params.require(:order_product).permit(:product_id, :quantity)
   end
 end

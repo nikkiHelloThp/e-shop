@@ -1,12 +1,12 @@
-#### un produit ne peut couter plus de 999.99 euro
+# PROBLEMES A RESOUDRE
+route cart [:post] manquante, peut on cibler l'action d'un autre controleur ? (link_to, button_to, form_url)
 
-ajouter plus tard la quantite au model order_product, peut etre aussi le total et le prix unitaire
+conflit routes avec product
 
-total = unit price * quantity
+cart peut etre attribue a un user non authentifie
 
 utiliser react pour le rendu dynamique
 
-smoothscroll
 
 trop de requetes serveur
 =>
