@@ -17,7 +17,7 @@ Processing by CartsController#show as HTML
   Rendering carts/show.html.erb within layouts/application
   *OrderProduct* Load (0.4ms)  SELECT "order_products".* FROM "order_products" WHERE "order_products"."order_id" = $1  [["order_id", 10]]
   ↳ app/views/carts/show.html.erb:10
-  *Product Load* (0.2ms)  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]
+  *Product Load* (0.2ms)  SELECT  "products".* F(vROM "products" WHERE "products"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]
   ↳ app/views/carts/show.html.erb:13
   Rendered carts/show.html.erb within layouts/application (3.4ms)
   *User Load* (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2  [["id", 1], ["LIMIT", 1]]
@@ -33,3 +33,12 @@ ajouter amazon S3
 
 template:
   file:///home/nikki/Bureau/directories/bootstrap/Bootstrap%20Themes/UI%20Kit/Purpose-website-ui-kit-v1.1.3/pages/pages-shop.html
+
+Dashboard:
+  view-source:file:///home/nikki/Bureau/directories/bootstrap/Bootstrap%20Themes/Dashboard/Hyper_v1.4.0/dist/index.html
+
+- Ajouter:
+  formulaire url: 'order_products'
+  categories
+  dashboard
+  cart pour les invites, connectez vous pour payer (l'utilisateur n'est defini qu'au paiement?, si l'utilisateur n'est pas connecte il a une session)

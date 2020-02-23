@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resource :cart, only: [:show]
-  resources :order_products, only: %i[create destroy]
+  resources :order_products, only: %i[create update destroy]
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -3,10 +3,6 @@
         <div class="container">
             <%= link_to "Home", root_path, class: 'navbar-brand mr-lg-5' %>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
             <div class="collapse navbar-collapse" id="navbar-main-collapse">
                 <% if user_signed_in? %>
                     <ul class="navbar-nav align-items-lg-center">
@@ -26,15 +22,10 @@
                         <li class="nav-item">
                             <% if current_user.admin %>
                                 <%= link_to "Admin", products_path, class: 'nav-link' %>
+                                <%#= link_to "Admin", [:admin, Products], class: 'nav-link' %>
                             <% end %>
                         </li>
-                        <li class="nav-item mr-0">
-                            <%= link_to cart_path, class: 'btn btn-sm btn-white btn-circle btn-icon d-none d-lg-inline-flex' do %>
-                                <span class="btn-inner--icon"><i class="fas fa-shopping-cart"></i></span>
-                                <span class="btn-inner--text">Cart</span>
-                            <% end %>
-                            </a>
-                        </li>
+
                     </ul>
 
                 <% else %>
@@ -49,6 +40,11 @@
                     
                 <% end %>
             </div>
+            
+            <%= link_to cart_path, class: 'btn btn-sm btn-white btn-circle btn-icon d-none d-lg-inline-flex' do %>
+                <span class="btn-inner--icon"><i class="fas fa-shopping-cart"></i></span>
+                <span class="btn-inner--text">Cart</span>
+            <% end %>
         </div>
     </nav>
 </header>
