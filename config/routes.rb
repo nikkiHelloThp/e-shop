@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
   root 'home#index'
   get 'orders', to: 'home#orders'
 
   resources :products, only: [:show] # ATTENTION CONFLIT AVEC SCOPE ADMIN !!!
   
   scope module: :admin do
+    resources :dashboard, only: [:index]
     resources :products
   end
 

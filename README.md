@@ -1,5 +1,36 @@
 # PROBLEMES A RESOUDRE
-route cart [:post] manquante, peut on cibler l'action d'un autre controleur ? (link_to, button_to, form_url)
+
+top selling products:
+first = OrderProduct.all.each{|order_product| order_product}.map{|p| [p.product_id, p.quantity]}
+second = first.inject(Hash.new{|h,k| h[k]=[]}){|h, (k,v)| h[k] << v; h}
+
+
+products = OrderItem.group(:product_id).sum(:quantity)
+  ids = products.sort_by {|k,v| v}.reverse.map(&:first)
+  where(id: ids)
+
+Add this method in your product model:
+
+def self.order_by_ids(ids)
+  order_by = ["case"]
+  ids.each_with_index.map do |id, index|
+    order_by << "WHEN id='#{id}' THEN #{index}"
+  end
+  order_by << "end"
+  order(order_by.join(" "))
+end
+Then:
+
+products = OrderItem.group(:product_id).sum(:quantity)
+ids = products.sort_by {|k,v| v}.reverse.map(&:first)
+where(id: ids)..order_by_ids(ids)
+
+
+
+
+navbar par-dessus contenu, a revoir !
+
+calculer "top selling products" dans dashboard
 
 conflit routes avec product
 
@@ -38,7 +69,5 @@ Dashboard:
   view-source:file:///home/nikki/Bureau/directories/bootstrap/Bootstrap%20Themes/Dashboard/Hyper_v1.4.0/dist/index.html
 
 - Ajouter:
-  formulaire url: 'order_products'
   categories
-  dashboard
   cart pour les invites, connectez vous pour payer (l'utilisateur n'est defini qu'au paiement?, si l'utilisateur n'est pas connecte il a une session)
