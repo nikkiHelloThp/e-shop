@@ -1,12 +1,13 @@
 <h1>Listing Products</h1>
 
-<%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_product_path %>
+<%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_admin_product_path %>
 
 <table class="table">
 	<tr>
 		<th scope="col">Title</th>
 		<th scope="col">Description</th>
 		<th scope="col">Price</th>
+		<th scope="col">Category</th>
 		<th scope="col" colspan="3">Actions</th>
 	</tr>
 
@@ -15,11 +16,12 @@
       <td><%= product.title %></td>
       <td><%= product.description %></td>
       <td><%= product.price %></td>
-      <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, product_path(product), class: 'btn btn-primary' %></td>
-      <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_product_path(product), class: 'btn btn-warning' %></td>
-      <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      <td><%= product.category.name %></td>
+      <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, admin_product_path(product), class: 'btn btn-primary' %></td>
+      <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_admin_product_path(product), class: 'btn btn-warning' %></td>
+      <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
     </tr>
 	<% end %>
 </table>
 
-<%= link_to 'Back', dashboard_index_path %>
+<%= link_to 'Back', admin_dashboard_index_path %>

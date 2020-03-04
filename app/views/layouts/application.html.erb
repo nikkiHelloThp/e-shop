@@ -26,5 +26,27 @@
     <%= yield %>
     
     <%= render partial: 'layouts/footer' %>
+    <script>
+      $('#wave').wavify({ height: 60, bones: 3, amplitude: 40, color: 'rgba(255, 255, 255, .2)', speed: .25 });
+
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      });
+
+      var swiper = new Swiper('.swiper-container', {
+        spaceBetween: 20,
+        slidesPerView: 3,
+        breakpoints: {
+          576: {
+              slidesPerView: 1,
+          }
+        },
+        freeMode: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+      });
+    </script>
   </body>
 </html>

@@ -1,0 +1,21 @@
+<h1>Listing Categories</h1>
+
+<%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_admin_category_path %>
+
+<table class="table">
+	<tr>
+		<th scope="col">Name</th>
+		<th scope="col" colspan="3">Actions</th>
+	</tr>
+
+	<%@categories.each do |category| %>
+		<tr>
+      <td><%= category.name %></td>
+      <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, admin_category_path(category), class: 'btn btn-primary' %></td>
+      <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_admin_category_path(category), class: 'btn btn-warning' %></td>
+      <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+    </tr>
+	<% end %>
+</table>
+
+<%= link_to 'Back', admin_dashboard_index_path %>

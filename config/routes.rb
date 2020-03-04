@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'orders', to: 'home#orders'
 
-  resources :products, only: [:show] # ATTENTION CONFLIT AVEC SCOPE ADMIN !!!
-  
-  scope module: :admin do
+  namespace :admin do
     resources :dashboard, only: [:index]
     resources :products
+    resources :categories
   end
 
+  resources :products, only: [:show]
+  
   scope '/checkout' do
   	post 'create', to: 'checkout#create', as: 'checkout_create'
   	get 'success', to: 'checkout#success', as: 'checkout_success'
