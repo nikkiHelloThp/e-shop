@@ -26,3 +26,26 @@ html {
   -webkit-align-items: center;
   align-items: center;
 }
+
+.card-image {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cart_icon {
+  position: absolute;
+  overflow: hidden;
+  transition: 1s;
+  left: -60px;
+}
+
+.cart_icon:hover {
+  transition: 1s;
+  left: -15px;
+}
+
+.cart_icon button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

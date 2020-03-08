@@ -1,5 +1,8 @@
-<h1>Edit Product</h1>
+<%= render partial: 'layouts/banner', locals: { page: 'Edit Product', information: '' } %>
 
-<%= render 'form' %>
+<div class="container mt-3">
 
-<%= link_to 'Back', admin_products_path %>
+	<%= render partial: 'form', locals: { product: @product } %>
+
+	<%= link_to 'Back', admin_products_path %>
+</div>

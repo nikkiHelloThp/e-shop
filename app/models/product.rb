@@ -12,21 +12,27 @@ class Product < ApplicationRecord
   belongs_to :category
 
   validates_presence_of :slug
+  
+  # def method(id, **json)
+  # 	find(id).map{|p| [p.title, p.price, order_product.qty, p.price*order_product.qty]}
+  # end
+  # multiple_args(*arg)
+  
+
+		# products = OrderProduct.group(:product_id).sum(:quantity)
+		# ids = products.sort_by {|k,v| v}.reverse.map(&:first)
+		# find(ids.take(5))
 
   def self.popular
-  	products = OrderProduct.group(:product_id).sum(:quantity)
-		ids = products.sort_by {|k,v| v}.reverse.map(&:first)
-		where(id: ids).order_by_ids(ids)
+		product_sum = OrderProduct.group(:product_id).sum(:quantity)
+		product = product_sum.map{|k| k[0]}
+		qty = product_sum.map{|k| k[1]}
+		products = Product.find(product)
+		arr1 = products.map{|e| [e.title, e.price]}
+		arr2 = arr1.each{|e| e << qty.shift()}
+		arr3 = arr2.each{|e| e << (e[1]*e[2]).to_i}
+		arr3.each{|e| e}
   end
-
-  def self.order_by_ids(ids)
-	  order_by = ["case"]
-	  ids.each_with_index.map do |id, index|
-	    order_by << "WHEN id='#{id}' THEN #{index}"
-	  end
-	  order_by << "end"
-	  order(order_by.join(" "))
-	end
 
 	def to_param
 		slug

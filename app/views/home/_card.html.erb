@@ -9,10 +9,12 @@
             <span class="card-price"><%= product.price %> &euro;</span> 
         </div>
 							
-		<div class="container text-center">
+		<div class="container cart_icon">
             <%= form_with model: @order_product do |f| %>
 				<%= f.hidden_field :product_id, value: product.id %>
-				<%= f.submit 'Add to cart', class: 'btn btn-primary ml-3' %>
+				<%= f.button :submit, data: { toggle: 'tooltip', title: 'Add to cart' } do %>
+                    <i class="fas fa-shopping-cart"></i>
+                <% end %>
 			<% end %>
 		</div>
 

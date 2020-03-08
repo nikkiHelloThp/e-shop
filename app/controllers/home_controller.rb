@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   def index
     @categories = Category.all
     category = params[:category]
-    if !category.nil?
+    if !!category
     	@products = Product.where(category: category)
     else
     	@products = Product.all

@@ -2,7 +2,7 @@
 
 module ApplicationHelper
   def current_order
-    if !cookies[:cart].nil?
+    if !!cookies[:cart]
       Order.find(cookies[:cart])
     else
       Order.new(user: current_user)

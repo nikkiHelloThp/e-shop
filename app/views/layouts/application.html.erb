@@ -15,18 +15,24 @@
 
   <body>
 
-    <%= render partial: 'layouts/navbar' %>
-    <!-- or yield(:header)  -->
-    <!-- puis content_for :header do dans la vue correspondante -->
-
     <% flash.each do |type, msg| %>
-      <div class="alert alert-<%=type%>"><%= msg %></div>
-    <% end %>    
+      <div class="alert alert-<%=type%> alert-dismissible fade show" role="alert">
+        <%= msg %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+
+    <%= render partial: 'layouts/navbar' %>
 
     <%= yield %>
     
     <%= render partial: 'layouts/footer' %>
+    
     <script>
+      $('.alert').alert();
+
       $('#wave').wavify({ height: 60, bones: 3, amplitude: 40, color: 'rgba(255, 255, 255, .2)', speed: .25 });
 
       $(function () {

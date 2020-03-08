@@ -1,11 +1,11 @@
-<section class="slice">
+<section class="slice" id="section_cat">
     <div class="container swiper-js-container">
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <% @categories.each do |category| %>
                     <div class="swiper-slide">
                         <div class="text-center mt-3">
-                            <%= link_to category.name, root_path(category: category), class: 'h6 font-weight-bolder' %>
+                            <%= link_to category.name, root_path(category: category, anchor: 'section_cat'), class: 'h6 font-weight-bolder' %>
                         </div>
                     </div>
                 <% end %>
