@@ -1,5 +1,5 @@
 <header class="header-transparent" id="header-main">
-    <nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-transparent navbar-<%= (current_page?(cart_path) && @order_products.none?) ? 'light' : 'dark' %> bg-light" id="navbar-main">
+    <nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-transparent navbar-<%= (current_page?(cart_path) && @order_products.none?) ? 'light' : 'dark' %>" id="navbar-main">
         <div class="container">
             <%= link_to "Home", root_path, class: 'navbar-brand mr-lg-5' %>
 

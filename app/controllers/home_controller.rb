@@ -13,6 +13,6 @@ class HomeController < ApplicationController
   end
 
   def orders
-  	@orders = Order.where(user: current_user).where(paid: true).includes(:products)
+  	@orders = Order.where(user: current_user, paid: true).includes(:products)
   end
 end
