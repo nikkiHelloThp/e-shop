@@ -35,14 +35,9 @@
                                 <div class="card widget-flat">
                                     <div class="card-body">
                                         <div class="float-right">
-                                            <i class="fas fa-user-friends"></i>
+                                            <%= @customers %> <i class="fas fa-user-friends"></i>
                                         </div>
                                         <h5 class="text-muted font-weight-normal mt-0" title="Number of Customers">Customers</h5>
-                                        <h3 class="mt-3 mb-3"><%= @customers %></h3>
-                                        <p class="mb-0 text-muted">
-                                            <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 5.27%</span>
-                                            <span class="text-nowrap">Since last month</span>  
-                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -51,48 +46,9 @@
                                 <div class="card widget-flat">
                                     <div class="card-body">
                                         <div class="float-right">
-                                            <i class="fas fa-cart-plus"></i>
+                                            <%= @order_count %> <i class="fas fa-cart-plus"></i>
                                         </div>
                                         <h5 class="text-muted font-weight-normal mt-0" title="Number of Orders">Orders</h5>
-                                        <h3 class="mt-3 mb-3"><%= @order_count %></h3>
-                                        <p class="mb-0 text-muted">
-                                            <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.08%</span>
-                                            <span class="text-nowrap">Since last month</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-2">
-                            <div class="col-lg-6">
-                                <div class="card widget-flat">
-                                    <div class="card-body">
-                                        <div class="float-right">
-                                            <i class="fas fa-dollar-sign"></i>
-                                        </div>
-                                        <h5 class="text-muted font-weight-normal mt-0" title="Average Revenue">Revenue</h5>
-                                        <h3 class="mt-3 mb-3">$<%= @revenue %></h3>
-                                        <p class="mb-0 text-muted">
-                                            <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 7.00%</span>
-                                            <span class="text-nowrap">Since last month</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="card widget-flat">
-                                    <div class="card-body">
-                                        <div class="float-right">
-                                            <i class="fas fa-chart-line"></i>
-                                        </div>
-                                        <h5 class="text-muted font-weight-normal mt-0" title="Growth">Growth</h5>
-                                        <h3 class="mt-3 mb-3">+ <%#= @growth %>%</h3>
-                                        <p class="mb-0 text-muted">
-                                            <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 4.87%</span>
-                                            <span class="text-nowrap">Since last month</span>
-                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -104,9 +60,7 @@
                                     <div class="card-body">
                                         <h4 class="header-title mb-4">Total Sales</h4>
                                         <div class="text-center">
-
                                             <h3 class="font-weight-normal text-primary mb-2">$<%= @total_sales %></h3>
-                                            <p class="text-uppercase font-13 font-weight-bold">All Times</p>
                                         </div>
                                     </div>
                                 </div>
@@ -118,8 +72,6 @@
                                         <h4 class="header-title text-white mb-4">Average Sale Size</h4>
                                         <div class="text-center">
                                             <h3 class="font-weight-normal text-white mb-2">$<%= @average_sale_size %></h3>
-                                            <p class="text-light text-uppercase font-13 font-weight-bold">Per Sale</p>
-
                                         </div>
                                     </div>
                                 </div>
