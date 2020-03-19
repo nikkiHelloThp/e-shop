@@ -1,12 +1,15 @@
 <header class="header-transparent" id="header-main">
-    <nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-transparent navbar-<%= (current_page?(cart_path) && @order_products.none?) ? 'light' : 'dark' %>" id="navbar-main">
-        <div class="container">
+    <div class="container">
+        <nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-transparent navbar-<%= (current_page?(cart_path) && @order_products.none?) ? 'light' : 'dark' %>" id="navbar-main">
             <%= link_to "Home", root_path, class: 'navbar-brand mr-lg-5' %>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <div class="collapse navbar-collapse" id="navbar-main-collapse">
+            <div class="navbar-collapse collapse" id="navbar-main-collapse">
                 <% if user_signed_in? %>
                     <ul class="navbar-nav align-items-lg-center">
-                        <li class="nav-item ">
+                        <li class="nav-item">
                             <%= link_to "Account", edit_user_registration_path, class: 'nav-link' %>
                         </li>
 
@@ -24,7 +27,12 @@
                                 <%= link_to "Admin", admin_dashboard_index_path, class: 'nav-link' %>
                             <% end %>
                         </li>
-
+                        <li class="nav-item mr-0">
+                            <%= link_to cart_path, class: 'btn btn-sm btn-white btn-circle btn-icon d-lg-none d-lg-inline-flex' do %>
+                                <span class="btn-inner--icon"><i class="fas fa-shopping-cart"></i></span>
+                                <span class="btn-inner--text">Shopping Cart</span>
+                            <% end %>
+                        </li>
                     </ul>
 
                 <% else %>
@@ -39,11 +47,6 @@
                     
                 <% end %>
             </div>
-            
-            <%= link_to cart_path, class: 'btn btn-sm btn-white btn-circle btn-icon d-none d-lg-inline-flex' do %>
-                <span class="btn-inner--icon"><i class="fas fa-shopping-cart"></i></span>
-                <span class="btn-inner--text">Shopping Cart</span>
-            <% end %>
-        </div>
-    </nav>
+        </nav>
+    </div>
 </header>

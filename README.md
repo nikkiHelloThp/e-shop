@@ -1,3 +1,3 @@
-# PROBLEMES A RESOUDRE
-ajouter cles sendgrid sur heroku
-ajouter amazon S3
+# ADD TO HEROKU ENV
+- sendgrid
+- amazon S3

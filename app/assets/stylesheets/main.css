@@ -2,9 +2,22 @@ html {
 	scroll-behavior: smooth;
 }
 
+html, body {
+  position: relative;
+  height: 100%;
+}
+
+.show {
+  transition: 1s;
+  background-color: rgba(0,0,0,.7);
+  border-radius: 20px;
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,.3);
+  padding: 10px;
+}
+
 .swiper-container {
-	width: 600px;
-	height: 300px;
+  width: 100%;
+  height: 100%;
 }
 
 .swiper-slide {
@@ -25,6 +38,11 @@ html {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+}
+
+.swiper-pagination {
+  position: relative;
+  top: 5px;
 }
 
 .card-image {
