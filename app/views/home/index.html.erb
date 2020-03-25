@@ -37,7 +37,9 @@
         <div class="row">
 
 		  <% @products.each do |product| %>
-            <%= render partial: 'card', locals: { product: product }%>
+            <% cache product do %>
+                <%= render partial: 'card', locals: { product: product }%>
+            <% end %>
           <% end %>
 
         </div>

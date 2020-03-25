@@ -12,12 +12,12 @@ class OrderProductsController < ApplicationController
 
   def update
     @order_product.update_attributes(order_item_params)
-    redirect_to cart_path # @order_products = @order.order_products
+    redirect_to cart_path
   end
 
   def destroy
     @order_product.destroy
-    redirect_to cart_path # @order_products = @order.order_products
+    redirect_to cart_path
   end
 
   private

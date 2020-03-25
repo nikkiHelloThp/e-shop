@@ -60,7 +60,7 @@
                                     <div class="card-body">
                                         <h4 class="header-title mb-4">Total Sales</h4>
                                         <div class="text-center">
-                                            <h3 class="font-weight-normal text-primary mb-2">$<%= @total_sales %></h3>
+                                            <h3 class="font-weight-normal text-primary mb-2"><%= @total_sales.to_s(:currency) %></h3>
                                         </div>
                                     </div>
                                 </div>
