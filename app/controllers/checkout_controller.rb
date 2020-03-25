@@ -22,7 +22,7 @@ class CheckoutController < ApplicationController
 
   def success
     order = current_order
-    order.update_attribute(paid: true)
+    order.update_attribute(:paid, true)
     @order_products = order.order_products
     cookies.delete(:cart)
     UserMailer.with(user: current_user).order_email.deliver_now

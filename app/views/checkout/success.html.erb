@@ -1,8 +1,27 @@
-<h1>Thank you !</h1>
-<h2>You successfully purchased: </h2>
-<ul class="list-group">
-  <li class="list-group-item disabled">Product</li>
-  <% @order_products.each do |order_product| %>
-  	<li class="list-group-item"><%= order_product.product.title %></li>
-	<% end %>
-</ul>
+<%= render partial: 'layouts/banner', locals: { page: 'Thank you!', information: '' } %>
+<p class="text-center mt-5">
+	<strong>You successfully purchased:</strong>
+</p>
+
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Unit Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @order_products.each do |order_product| %>
+	    <tr>
+	      <th scope="row"><%= order_product.product.title %></th>
+	      <td><%= order_product.product.description %></td>
+	      <td><%= order_product.product.price %></td>
+	      <td><%= order_product.quantity %></td>
+	      <td><%= order_product.total_price %></td>
+	    </tr>
+	  <% end %>
+  </tbody>
+</table>
